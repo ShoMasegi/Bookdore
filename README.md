@@ -1,5 +1,5 @@
 # Bookdore
-![](https://img.shields.io/badge/Ruby-2.7.0--dev-red.svg)
+![](https://img.shields.io/badge/Ruby-2.6.3-red.svg)
 ![](https://img.shields.io/badge/Rails-5.2.3-blue.svg)
 
 book + pressure + pomodoro
