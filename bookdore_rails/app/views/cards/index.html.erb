@@ -1,0 +1,15 @@
+<br>
+<br>
+<table border>
+  <tr bgcolor="green">
+    <th>book</th>
+    <th>status</th>
+  </tr>
+  <% @cards.each do |card| %>
+    <tr>
+      <td><%= card.book %></td>
+      <td><%= card.status %></td>
+    </tr>
+  <% end %>
+</table>
+<br>
