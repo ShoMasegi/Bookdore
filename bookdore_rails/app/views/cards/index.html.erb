@@ -7,7 +7,7 @@
   </tr>
   <% @cards.each do |card| %>
     <tr>
-      <td><%= card.book %></td>
+      <td><%= link_to card.book, card_path(card.id) %></td>
       <td><%= card.status %></td>
     </tr>
   <% end %>
