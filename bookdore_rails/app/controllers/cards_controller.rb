@@ -3,6 +3,7 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(user_params)
     if @card.save
+      flash[:success] = "Succeed to create card!"
       redirect_to @card
     else
       render 'new'
