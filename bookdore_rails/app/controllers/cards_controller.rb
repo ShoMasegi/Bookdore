@@ -18,10 +18,16 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
     if @card.update_attributes(user_params)
       flash[:success] = "Updated the card!"
-      redirect_to :action => 'index'
+      redirect_to cards_path
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    Card.find(params[:id]).destroy
+    flash[:success] = "Card deleted!"
+    redirect_to cards_path
   end
 
   def show
