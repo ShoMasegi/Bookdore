@@ -1,0 +1,15 @@
+<br>
+<br>
+<table border>
+  <tr bgcolor="green">
+    <th>book</th>
+    <th>status</th>
+  </tr>
+  <% @cards.each do |card| %>
+    <tr>
+      <td><%= link_to card.book, card_path(card.id) %></td>
+      <td><%= card.status %></td>
+    </tr>
+  <% end %>
+</table>
+<br>
