@@ -1,0 +1,1134 @@
+  [1m[35m (139.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "bookdore_test"[0m
+  [1m[35m (1824.4ms)[0m  [1m[35mCREATE DATABASE "bookdore_test" ENCODING = 'unicode'[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6399953217143757285)[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCards (20190508053956)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "cards" ("id" bigserial primary key, "book" character varying, "status" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190508053956"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2019-05-08 08:52:26.395683"], ["updated_at", "2019-05-08 08:52:26.395683"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(6399953217143757285)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "cards" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.5ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-08 08:52:45.878412', '2019-05-08 08:52:45.878412'), (298486374, 'MyString', 'MyString', '2019-05-08 08:52:45.878412', '2019-05-08 08:52:45.878412')[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "cards" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------
+CardsControllerTest: test_should_get_new
+----------------------------------------
+Started GET "/cards/new" for 127.0.0.1 at 2019-05-08 17:52:46 +0900
+Processing by CardsController#new as HTML
+  Rendering cards/new.html.erb within layouts/application
+  Rendered cards/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 575ms (Views: 568.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (136.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "bookdore_test"[0m
+  [1m[35m (498.4ms)[0m  [1m[35mCREATE DATABASE "bookdore_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "cards" CASCADE[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "cards" ("id" bigserial primary key, "book" character varying, "status" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190508053956)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2019-05-09 09:50:27.772681"], ["updated_at", "2019-05-09 09:50:27.772681"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.6ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 09:50:27.859154', '2019-05-09 09:50:27.859154'), (298486374, 'MyString', 'MyString', '2019-05-09 09:50:27.859154', '2019-05-09 09:50:27.859154')[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.7ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 09:51:02.359896', '2019-05-09 09:51:02.359896'), (298486374, 'MyString', 'MyString', '2019-05-09 09:51:02.359896', '2019-05-09 09:51:02.359896')[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (0.4ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 09:51:53.753043', '2019-05-09 09:51:53.753043'), (298486374, 'MyString', 'MyString', '2019-05-09 09:51:53.753043', '2019-05-09 09:51:53.753043')[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+CardTest: test_book_should_be_present
+-------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.8ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 09:54:31.489290', '2019-05-09 09:54:31.489290'), (298486374, 'MyString', 'MyString', '2019-05-09 09:54:31.489290', '2019-05-09 09:54:31.489290')[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.2ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 09:56:27.492435', '2019-05-09 09:56:27.492435'), (298486374, 'MyString', 'MyString', '2019-05-09 09:56:27.492435', '2019-05-09 09:56:27.492435')[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.4ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 10:14:59.688437', '2019-05-09 10:14:59.688437'), (298486374, 'MyString', 'MyString', '2019-05-09 10:14:59.688437', '2019-05-09 10:14:59.688437')[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+CardTest: test_book_should_not_be_too_long
+------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CardTest: test_status_should_not_be_too_long
+--------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (0.4ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 10:15:23.564308', '2019-05-09 10:15:23.564308'), (298486374, 'MyString', 'MyString', '2019-05-09 10:15:23.564308', '2019-05-09 10:15:23.564308')[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+CardTest: test_book_should_not_be_too_long
+------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CardTest: test_status_should_not_be_too_long
+--------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.8ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 10:16:11.141893', '2019-05-09 10:16:11.141893'), (298486374, 'MyString', 'MyString', '2019-05-09 10:16:11.141893', '2019-05-09 10:16:11.141893')[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+CardTest: test_book_should_not_be_too_long
+------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CardTest: test_status_should_not_be_too_long
+--------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (0.4ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 10:17:23.477050', '2019-05-09 10:17:23.477050'), (298486374, 'MyString', 'MyString', '2019-05-09 10:17:23.477050', '2019-05-09 10:17:23.477050')[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+CardTest: test_book_should_not_be_too_long
+------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CardTest: test_status_should_not_be_too_long
+--------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.3ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 10:20:59.963873', '2019-05-09 10:20:59.963873'), (298486374, 'MyString', 'MyString', '2019-05-09 10:20:59.963873', '2019-05-09 10:20:59.963873')[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CardTest: test_status_should_not_be_too_long
+--------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+CardTest: test_book_should_not_be_too_long
+------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+CardTest: test_book_should_be_unique
+------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Create (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Example Book"], ["status", "Example Status"], ["created_at", "2019-05-09 10:20:59.984456"], ["updated_at", "2019-05-09 10:20:59.984456"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (0.4ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 10:23:55.214715', '2019-05-09 10:23:55.214715'), (298486374, 'MyString', 'MyString', '2019-05-09 10:23:55.214715', '2019-05-09 10:23:55.214715')[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+CardTest: test_book_should_be_unique
+------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."status" = $1 LIMIT $2[0m  [["status", "Example Status"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Example Book"], ["status", "Example Status"], ["created_at", "2019-05-09 10:23:55.234649"], ["updated_at", "2019-05-09 10:23:55.234649"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."status" = $1 LIMIT $2[0m  [["status", "Example Status"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+CardTest: test_book_should_not_be_too_long
+------------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."status" = $1 LIMIT $2[0m  [["status", "Example Status"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[36mCard Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."status" = $1 LIMIT $2[0m  [["status", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CardTest: test_status_should_not_be_too_long
+--------------------------------------------
+  [1m[36mCard Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."status" = $1 LIMIT $2[0m  [["status", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[36mCard Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."status" = $1 LIMIT $2[0m  [["status", "Example Status"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.5ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 10:25:42.131851', '2019-05-09 10:25:42.131851'), (298486374, 'MyString', 'MyString', '2019-05-09 10:25:42.131851', '2019-05-09 10:25:42.131851')[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CardTest: test_status_should_not_be_too_long
+--------------------------------------------
+  [1m[36mCard Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."status" = $1 LIMIT $2[0m  [["status", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+CardTest: test_book_should_not_be_too_long
+------------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."status" = $1 LIMIT $2[0m  [["status", "Example Status"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."status" = $1 LIMIT $2[0m  [["status", "Example Status"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+CardTest: test_book_should_be_unique
+------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."status" = $1 LIMIT $2[0m  [["status", "Example Status"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Example Book"], ["status", "Example Status"], ["created_at", "2019-05-09 10:25:42.154942"], ["updated_at", "2019-05-09 10:25:42.154942"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."status" = $1 LIMIT $2[0m  [["status", "Example Status"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."status" = $1 LIMIT $2[0m  [["status", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (0.4ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 10:26:11.645793', '2019-05-09 10:26:11.645793'), (298486374, 'MyString', 'MyString', '2019-05-09 10:26:11.645793', '2019-05-09 10:26:11.645793')[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+CardTest: test_book_should_be_unique
+------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Example Book"], ["status", "Example Status"], ["created_at", "2019-05-09 10:26:11.671848"], ["updated_at", "2019-05-09 10:26:11.671848"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+CardTest: test_book_should_not_be_too_long
+------------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CardTest: test_status_should_not_be_too_long
+--------------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.6ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 10:28:50.995421', '2019-05-09 10:28:50.995421'), (298486374, 'MyString', 'MyString', '2019-05-09 10:28:50.995421', '2019-05-09 10:28:50.995421')[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+CardTest: test_book_should_be_unique
+------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Example Book"], ["status", "Example Status"], ["created_at", "2019-05-09 10:28:51.012883"], ["updated_at", "2019-05-09 10:28:51.012883"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CardTest: test_status_should_not_be_too_long
+--------------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+CardTest: test_book_should_not_be_too_long
+------------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (1.8ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 10:30:12.527947', '2019-05-09 10:30:12.527947'), (298486374, 'MyString', 'MyString', '2019-05-09 10:30:12.527947', '2019-05-09 10:30:12.527947')[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CardTest: test_status_should_not_be_too_long
+--------------------------------------------
+  [1m[36mCard Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+CardTest: test_book_should_be_unique
+------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Example Book"], ["status", "Example Status"], ["created_at", "2019-05-09 10:30:12.552643"], ["updated_at", "2019-05-09 10:30:12.552643"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+CardTest: test_book_should_not_be_too_long
+------------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.5ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 10:31:18.935670', '2019-05-09 10:31:18.935670'), (298486374, 'MyString', 'MyString', '2019-05-09 10:31:18.935670', '2019-05-09 10:31:18.935670')[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[36mCard Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+CardTest: test_book_should_be_unique
+------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Example Book"], ["status", "Example Status"], ["created_at", "2019-05-09 10:31:18.955604"], ["updated_at", "2019-05-09 10:31:18.955604"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+CardTest: test_book_should_not_be_too_long
+------------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CardTest: test_status_should_not_be_too_long
+--------------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (0.4ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 10:33:05.745697', '2019-05-09 10:33:05.745697'), (298486374, 'MyString', 'MyString', '2019-05-09 10:33:05.745697', '2019-05-09 10:33:05.745697')[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+CardTest: test_book_should_not_be_too_long
+------------------------------------------
+  [1m[36mCard Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[36mCard Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+CardTest: test_book_should_be_unique
+------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CardTest: test_status_should_not_be_too_long
+--------------------------------------------
+  [1m[36mCard Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (0.7ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 10:33:32.936736', '2019-05-09 10:33:32.936736'), (298486374, 'MyString', 'MyString', '2019-05-09 10:33:32.936736', '2019-05-09 10:33:32.936736')[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+CardTest: test_book_should_be_unique
+------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Example Book"], ["status", "Example Status"], ["created_at", "2019-05-09 10:33:32.954925"], ["updated_at", "2019-05-09 10:33:32.954925"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "hogehoge"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+CardTest: test_book_should_not_be_too_long
+------------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CardTest: test_status_should_not_be_too_long
+--------------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (0.4ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 10:35:23.246553', '2019-05-09 10:35:23.246553'), (298486374, 'MyString', 'MyString', '2019-05-09 10:35:23.246553', '2019-05-09 10:35:23.246553')[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+CardTest: test_book_should_be_unique
+------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Example Book"], ["status", "Example Status"], ["created_at", "2019-05-09 10:35:23.266472"], ["updated_at", "2019-05-09 10:35:23.266472"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "another example book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CardTest: test_status_should_not_be_too_long
+--------------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+CardTest: test_book_should_not_be_too_long
+------------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (3.1ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-09 10:35:37.799036', '2019-05-09 10:35:37.799036'), (298486374, 'MyString', 'MyString', '2019-05-09 10:35:37.799036', '2019-05-09 10:35:37.799036')[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CardTest: test_status_should_not_be_too_long
+--------------------------------------------
+  [1m[36mCard Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+CardTest: test_book_should_be_unique
+------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Example Book"], ["status", "Example Status"], ["created_at", "2019-05-09 10:35:37.836880"], ["updated_at", "2019-05-09 10:35:37.836880"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+CardTest: test_book_should_not_be_too_long
+------------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (14.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (4.0ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Test Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (7.9ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Test Book"], ["status", "Test Status"], ["created_at", "2019-05-10 05:56:07.507768"], ["updated_at", "2019-05-10 05:56:07.507768"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/cards/new" for 127.0.0.1 at 2019-05-10 14:56:10 +0900
+Processing by CardsController#new as HTML
+  Rendering cards/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.3ms)
+  Rendered cards/new.html.erb within layouts/application (5.8ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 3423ms (Views: 3415.2ms | ActiveRecord: 0.0ms)
+Started GET "/assets/application-c9e1276a4e5a0a0560e41c8b03c9e014d1b8eac5478503d16ff9a99d400d31a7.css" for 127.0.0.1 at 2019-05-10 14:56:13 +0900
+Started GET "/assets/application-d9321a7213b0951eabfbf1a85a5e8483b322e1da1fc4c12390e6bb2f5826b23e.js" for 127.0.0.1 at 2019-05-10 14:56:13 +0900
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Test Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Test Book"], ["status", "Test Status"], ["created_at", "2019-05-10 05:56:45.063524"], ["updated_at", "2019-05-10 05:56:45.063524"]]
+  [1m[35m (0.7ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/cards/new" for 127.0.0.1 at 2019-05-10 14:56:46 +0900
+Processing by CardsController#new as HTML
+  Rendering cards/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.3ms)
+  Rendered cards/new.html.erb within layouts/application (5.4ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 186ms (Views: 178.8ms | ActiveRecord: 0.0ms)
+Started GET "/assets/application-c9e1276a4e5a0a0560e41c8b03c9e014d1b8eac5478503d16ff9a99d400d31a7.css" for 127.0.0.1 at 2019-05-10 14:56:46 +0900
+Started GET "/assets/application-d9321a7213b0951eabfbf1a85a5e8483b322e1da1fc4c12390e6bb2f5826b23e.js" for 127.0.0.1 at 2019-05-10 14:56:46 +0900
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (2.9ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Test Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (1.5ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Test Book"], ["status", "Test Status"], ["created_at", "2019-05-10 05:59:40.396677"], ["updated_at", "2019-05-10 05:59:40.396677"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/cards/new" for 127.0.0.1 at 2019-05-10 14:59:42 +0900
+Processing by CardsController#new as HTML
+  Rendering cards/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.3ms)
+  Rendered cards/new.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 188ms (Views: 179.4ms | ActiveRecord: 0.0ms)
+Started GET "/assets/application-c9e1276a4e5a0a0560e41c8b03c9e014d1b8eac5478503d16ff9a99d400d31a7.css" for 127.0.0.1 at 2019-05-10 14:59:42 +0900
+Started GET "/assets/application-d9321a7213b0951eabfbf1a85a5e8483b322e1da1fc4c12390e6bb2f5826b23e.js" for 127.0.0.1 at 2019-05-10 14:59:42 +0900
+Started POST "/cards" for 127.0.0.1 at 2019-05-10 14:59:42 +0900
+Processing by CardsController#create as HTML
+  Parameters: {"utf8"=>"✓", "card"=>{"book"=>"Test Book2", "status"=>"Test Status2"}, "commit"=>"Create new card"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Test Book2"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Test Book2"], ["status", "Test Status2"], ["created_at", "2019-05-10 05:59:42.759904"], ["updated_at", "2019-05-10 05:59:42.759904"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://127.0.0.1:50949/cards/980190967
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+Started GET "/cards/980190967" for 127.0.0.1 at 2019-05-10 14:59:42 +0900
+Processing by CardsController#show as HTML
+  Parameters: {"id"=>"980190967"}
+  [1m[36mCard Load (0.6ms)[0m  [1m[34mSELECT  "cards".* FROM "cards" WHERE "cards"."id" = $1 LIMIT $2[0m  [["id", 980190967], ["LIMIT", 1]]
+  Rendering cards/show.html.erb within layouts/application
+  Rendered cards/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 1.9ms | ActiveRecord: 0.8ms)
+Started GET "/cards" for 127.0.0.1 at 2019-05-10 14:59:42 +0900
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (1.9ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Test Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (2.7ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Test Book"], ["status", "Test Status"], ["created_at", "2019-05-10 06:00:06.823723"], ["updated_at", "2019-05-10 06:00:06.823723"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/cards/new" for 127.0.0.1 at 2019-05-10 15:00:08 +0900
+Processing by CardsController#new as HTML
+  Rendering cards/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.3ms)
+  Rendered cards/new.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 193ms (Views: 186.3ms | ActiveRecord: 0.0ms)
+Started GET "/assets/application-c9e1276a4e5a0a0560e41c8b03c9e014d1b8eac5478503d16ff9a99d400d31a7.css" for 127.0.0.1 at 2019-05-10 15:00:08 +0900
+Started GET "/assets/application-d9321a7213b0951eabfbf1a85a5e8483b322e1da1fc4c12390e6bb2f5826b23e.js" for 127.0.0.1 at 2019-05-10 15:00:08 +0900
+Started POST "/cards" for 127.0.0.1 at 2019-05-10 15:00:09 +0900
+Processing by CardsController#create as HTML
+  Parameters: {"utf8"=>"✓", "card"=>{"book"=>"Test Book2", "status"=>"Test Status2"}, "commit"=>"Create new card"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Test Book2"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Test Book2"], ["status", "Test Status2"], ["created_at", "2019-05-10 06:00:09.213025"], ["updated_at", "2019-05-10 06:00:09.213025"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://127.0.0.1:50968/cards/980190969
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+Started GET "/cards/980190969" for 127.0.0.1 at 2019-05-10 15:00:09 +0900
+Processing by CardsController#show as HTML
+  Parameters: {"id"=>"980190969"}
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT  "cards".* FROM "cards" WHERE "cards"."id" = $1 LIMIT $2[0m  [["id", 980190969], ["LIMIT", 1]]
+  Rendering cards/show.html.erb within layouts/application
+  Rendered cards/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.4ms)
+Started GET "/cards" for 127.0.0.1 at 2019-05-10 15:00:09 +0900
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Test Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.4ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Test Book"], ["status", "Test Status"], ["created_at", "2019-05-10 06:01:38.816354"], ["updated_at", "2019-05-10 06:01:38.816354"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/cards/new" for 127.0.0.1 at 2019-05-10 15:01:40 +0900
+Processing by CardsController#new as HTML
+  Rendering cards/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.3ms)
+  Rendered cards/new.html.erb within layouts/application (5.4ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 187ms (Views: 179.5ms | ActiveRecord: 0.0ms)
+Started GET "/assets/application-c9e1276a4e5a0a0560e41c8b03c9e014d1b8eac5478503d16ff9a99d400d31a7.css" for 127.0.0.1 at 2019-05-10 15:01:40 +0900
+Started GET "/assets/application-d9321a7213b0951eabfbf1a85a5e8483b322e1da1fc4c12390e6bb2f5826b23e.js" for 127.0.0.1 at 2019-05-10 15:01:40 +0900
+Started POST "/cards" for 127.0.0.1 at 2019-05-10 15:01:41 +0900
+Processing by CardsController#create as HTML
+  Parameters: {"utf8"=>"✓", "card"=>{"book"=>"Test Book2", "status"=>"Test Status2"}, "commit"=>"Create new card"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Test Book2"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Test Book2"], ["status", "Test Status2"], ["created_at", "2019-05-10 06:01:41.120058"], ["updated_at", "2019-05-10 06:01:41.120058"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://127.0.0.1:50996/cards/980190971
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+Started GET "/cards/980190971" for 127.0.0.1 at 2019-05-10 15:01:41 +0900
+Processing by CardsController#show as HTML
+  Parameters: {"id"=>"980190971"}
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT  "cards".* FROM "cards" WHERE "cards"."id" = $1 LIMIT $2[0m  [["id", 980190971], ["LIMIT", 1]]
+  Rendering cards/show.html.erb within layouts/application
+  Rendered cards/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.4ms)
+Started GET "/cards" for 127.0.0.1 at 2019-05-10 15:01:41 +0900
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (2.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Test Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.5ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Test Book"], ["status", "Test Status"], ["created_at", "2019-05-10 06:02:20.737860"], ["updated_at", "2019-05-10 06:02:20.737860"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/cards/new" for 127.0.0.1 at 2019-05-10 15:02:22 +0900
+Processing by CardsController#new as HTML
+  Rendering cards/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.3ms)
+  Rendered cards/new.html.erb within layouts/application (5.4ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 186ms (Views: 177.9ms | ActiveRecord: 0.0ms)
+Started GET "/assets/application-c9e1276a4e5a0a0560e41c8b03c9e014d1b8eac5478503d16ff9a99d400d31a7.css" for 127.0.0.1 at 2019-05-10 15:02:22 +0900
+Started GET "/assets/application-d9321a7213b0951eabfbf1a85a5e8483b322e1da1fc4c12390e6bb2f5826b23e.js" for 127.0.0.1 at 2019-05-10 15:02:22 +0900
+Started POST "/cards" for 127.0.0.1 at 2019-05-10 15:02:22 +0900
+Processing by CardsController#create as HTML
+  Parameters: {"utf8"=>"✓", "card"=>{"book"=>"Test Book2", "status"=>"Test Status2"}, "commit"=>"Create new card"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Test Book2"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Test Book2"], ["status", "Test Status2"], ["created_at", "2019-05-10 06:02:22.969481"], ["updated_at", "2019-05-10 06:02:22.969481"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://127.0.0.1:51016/cards/980190973
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+Started GET "/cards/980190973" for 127.0.0.1 at 2019-05-10 15:02:22 +0900
+Processing by CardsController#show as HTML
+  Parameters: {"id"=>"980190973"}
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT  "cards".* FROM "cards" WHERE "cards"."id" = $1 LIMIT $2[0m  [["id", 980190973], ["LIMIT", 1]]
+  Rendering cards/show.html.erb within layouts/application
+  Rendered cards/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.4ms)
+Started GET "/cards" for 127.0.0.1 at 2019-05-10 15:02:23 +0900
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (3.4ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Test Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (1.5ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Test Book"], ["status", "Test Status"], ["created_at", "2019-05-10 06:04:39.676884"], ["updated_at", "2019-05-10 06:04:39.676884"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/cards/new" for 127.0.0.1 at 2019-05-10 15:04:41 +0900
+Processing by CardsController#new as HTML
+  Rendering cards/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.3ms)
+  Rendered cards/new.html.erb within layouts/application (5.5ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 190ms (Views: 182.8ms | ActiveRecord: 0.0ms)
+Started GET "/assets/application-c9e1276a4e5a0a0560e41c8b03c9e014d1b8eac5478503d16ff9a99d400d31a7.css" for 127.0.0.1 at 2019-05-10 15:04:41 +0900
+Started GET "/assets/application-d9321a7213b0951eabfbf1a85a5e8483b322e1da1fc4c12390e6bb2f5826b23e.js" for 127.0.0.1 at 2019-05-10 15:04:41 +0900
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (2.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Test Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Test Book"], ["status", "Test Status"], ["created_at", "2019-05-10 06:11:03.679108"], ["updated_at", "2019-05-10 06:11:03.679108"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/cards/new" for 127.0.0.1 at 2019-05-10 15:11:05 +0900
+Processing by CardsController#new as HTML
+  Rendering cards/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.3ms)
+  Rendered cards/new.html.erb within layouts/application (5.6ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 262ms (Views: 254.5ms | ActiveRecord: 0.0ms)
+Started GET "/assets/application-c9e1276a4e5a0a0560e41c8b03c9e014d1b8eac5478503d16ff9a99d400d31a7.css" for 127.0.0.1 at 2019-05-10 15:11:05 +0900
+Started GET "/assets/application-d9321a7213b0951eabfbf1a85a5e8483b322e1da1fc4c12390e6bb2f5826b23e.js" for 127.0.0.1 at 2019-05-10 15:11:05 +0900
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Test Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (1.5ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Test Book"], ["status", "Test Status"], ["created_at", "2019-05-10 06:11:36.640296"], ["updated_at", "2019-05-10 06:11:36.640296"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/cards/new" for 127.0.0.1 at 2019-05-10 15:11:38 +0900
+Processing by CardsController#new as HTML
+  Rendering cards/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.3ms)
+  Rendered cards/new.html.erb within layouts/application (5.1ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 258ms (Views: 250.3ms | ActiveRecord: 0.0ms)
+Started GET "/assets/application-c9e1276a4e5a0a0560e41c8b03c9e014d1b8eac5478503d16ff9a99d400d31a7.css" for 127.0.0.1 at 2019-05-10 15:11:38 +0900
+Started GET "/assets/application-d9321a7213b0951eabfbf1a85a5e8483b322e1da1fc4c12390e6bb2f5826b23e.js" for 127.0.0.1 at 2019-05-10 15:11:38 +0900
+Started POST "/cards" for 127.0.0.1 at 2019-05-10 15:11:38 +0900
+Processing by CardsController#create as HTML
+  Parameters: {"utf8"=>"✓", "card"=>{"book"=>"Test Book2", "status"=>"Test Status2"}, "commit"=>"Create new card"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Test Book2"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Test Book2"], ["status", "Test Status2"], ["created_at", "2019-05-10 06:11:38.916643"], ["updated_at", "2019-05-10 06:11:38.916643"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://127.0.0.1:51160/cards/980190977
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+Started GET "/cards/980190977" for 127.0.0.1 at 2019-05-10 15:11:38 +0900
+Processing by CardsController#show as HTML
+  Parameters: {"id"=>"980190977"}
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT  "cards".* FROM "cards" WHERE "cards"."id" = $1 LIMIT $2[0m  [["id", 980190977], ["LIMIT", 1]]
+  Rendering cards/show.html.erb within layouts/application
+  Rendered cards/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.4ms)
+Started GET "/cards" for 127.0.0.1 at 2019-05-10 15:11:38 +0900
+Processing by CardsController#index as HTML
+  Rendering cards/index.html.erb within layouts/application
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards"[0m
+  Rendered cards/index.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.3ms)[0m  [1m[35mALTER TABLE "cards" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixtures Load (2.6ms)[0m  [1m[31mDELETE FROM "cards";
+INSERT INTO "cards" ("id", "book", "status", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', '2019-05-10 07:22:28.474625', '2019-05-10 07:22:28.474625'), (298486374, 'MyString', 'MyString', '2019-05-10 07:22:28.474625', '2019-05-10 07:22:28.474625')[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cards" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------
+CardsControllerTest: test_should_get_new
+----------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+CardTest: test_book_should_be_unique
+------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Example Book"], ["status", "Example Status"], ["created_at", "2019-05-10 07:22:28.609868"], ["updated_at", "2019-05-10 07:22:28.609868"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "another example book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+CardTest: test_status_should_be_present
+---------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------
+CardTest: test_book_should_not_be_too_long
+------------------------------------------
+  [1m[36mCard Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CardTest: test_should_be_valid
+------------------------------
+  [1m[36mCard Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CardTest: test_status_should_not_be_too_long
+--------------------------------------------
+  [1m[36mCard Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Example Book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCard Exists (2.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cards" WHERE "cards"."book" = $1 LIMIT $2[0m  [["book", "Test Book"], ["LIMIT", 1]]
+  [1m[36mCard Create (0.4ms)[0m  [1m[32mINSERT INTO "cards" ("book", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["book", "Test Book"], ["status", "Test Status"], ["created_at", "2019-05-10 07:57:40.305276"], ["updated_at", "2019-05-10 07:57:40.305276"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/cards/new" for 127.0.0.1 at 2019-05-10 16:57:42 +0900
+Processing by CardsController#new as HTML
+  Rendering cards/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.3ms)
+  Rendered cards/new.html.erb within layouts/application (6.0ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 272ms (Views: 263.2ms | ActiveRecord: 0.0ms)
+Started GET "/assets/application-c9e1276a4e5a0a0560e41c8b03c9e014d1b8eac5478503d16ff9a99d400d31a7.css" for 127.0.0.1 at 2019-05-10 16:57:42 +0900
+Started GET "/assets/application-d9321a7213b0951eabfbf1a85a5e8483b322e1da1fc4c12390e6bb2f5826b23e.js" for 127.0.0.1 at 2019-05-10 16:57:42 +0900
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
