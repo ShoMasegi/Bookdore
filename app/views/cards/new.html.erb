@@ -6,10 +6,10 @@
       <%= render 'shared/error_messages' %>
 
       <%= form.label :book %>
-      <%= form.text_field :book, class: 'form-control' %>
+      <%= form.text_field :book, class: 'form-control', id: 'form_book' %>
 
       <%= form.label :status %>
-      <%= form.text_field :status, class: 'form-control' %>
+      <%= form.text_field :status, class: 'form-control', id: 'form_status' %>
 
       <%= form.submit "Create new card", class: "btn btn-primary" %>
       <% end %>
