@@ -1,1 +1,2 @@
 <%= @card.book %>, <%= @card.status %>
+<%= link_to "delete", @card, method: :delete, data: { confirm: "You sure?" } %>
