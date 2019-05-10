@@ -1,5 +1,26 @@
 class CardsController < ApplicationController
 
+  # GET /cards
+  def index
+    @cards = Card.all
+  end
+
+  # GET /cards/:id
+  def show
+    @card = Card.find(params[:id])
+  end
+
+  # GET /cards/new
+  def new
+    @card = Card.new
+  end
+
+  # GET /cards/:id/edit
+  def edit
+    @card = Card.find(params[:id])
+  end
+
+  # POST /cards
   def create
     @card = Card.new(user_params)
     if @card.save
@@ -10,10 +31,7 @@ class CardsController < ApplicationController
     end
   end
 
-  def edit
-    @card = Card.find(params[:id])
-  end
-
+   # PATCH/PUT /cards/:id
   def update
     @card = Card.find(params[:id])
     if @card.update_attributes(user_params)
@@ -24,21 +42,11 @@ class CardsController < ApplicationController
     end
   end
 
+  # DELETE /cards/:id
   def destroy
     Card.find(params[:id]).destroy
     flash[:success] = "Card deleted!"
     redirect_to cards_path
-  end
-
-  def show
-    @card = Card.find(params[:id])
-  end
-  def index
-    @cards = Card.all
-  end
-
-  def new
-    @card = Card.new
   end
 
   private
