@@ -27,6 +27,7 @@ class CardsController < ApplicationController
       flash[:success] = "Succeed to create card!"
       redirect_to @card
     else
+      flash[:danger] = "Error : Failed to create card."
       render 'new'
     end
   end
@@ -38,15 +39,20 @@ class CardsController < ApplicationController
       flash[:success] = "Updated the card!"
       redirect_to cards_path
     else
+      flash[:danger] = "Error : Failed to update card."
       render 'edit'
     end
   end
 
   # DELETE /cards/:id
   def destroy
-    Card.find(params[:id]).destroy
-    flash[:success] = "Card deleted!"
-    redirect_to cards_path
+    if Card.find(params[:id]).destroy
+      flash[:success] = "Card deleted!"
+      redirect_to cards_path
+    else
+      flash[:danger] = "Error : Failed to delete card."
+      render 'index'
+    end
   end
 
   private
