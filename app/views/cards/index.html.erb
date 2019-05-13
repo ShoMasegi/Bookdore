@@ -5,7 +5,7 @@
     <th><%= sort_link(@q, :created_at) %></th>
     <th>book</th>
     <th>status</th>
-    <th>deadline</th>
+    <th><%= sort_link(@q, :deadline) %></th>
   </tr>
   <% @cards.each do |card| %>
     <tr>
