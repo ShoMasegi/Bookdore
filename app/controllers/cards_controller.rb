@@ -58,6 +58,6 @@ class CardsController < ApplicationController
   private
 
   def user_params
-    params.require(:card).permit(:book, :status)
+    params.require(:card).permit(:book, :status, :deadline)
   end
 end

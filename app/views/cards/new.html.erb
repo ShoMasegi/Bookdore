@@ -11,6 +11,14 @@
       <%= form.label :status %>
       <%= form.text_field :status, class: 'form-control', id: 'form_status' %>
 
+      <%= form.label :deadline %>
+      <%= form.text_field :deadline, data: { date_format: "YYYY-MM-DD HH:mm:ss"}, class: 'form-control', placeholder: 'YYYY-MM-DD HH:mm:ss', id: 'datetimepicker4' %>
+      <script type="text/javascript">
+          $(function () {
+              $('#datetimepicker4').datetimepicker();
+          });
+      </script>
+
       <%= form.submit "Create new card", class: "btn btn-primary" %>
       <% end %>
   </div>
