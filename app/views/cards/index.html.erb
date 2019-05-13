@@ -2,11 +2,13 @@
 <br>
 <table border>
   <tr bgcolor="green">
+    <th>created at</th>
     <th>book</th>
     <th>status</th>
   </tr>
   <% @cards.each do |card| %>
     <tr>
+      <td><%= card.created_at %></td>
       <td><%= link_to card.book, card_path(card.id) %></td>
       <td><%= link_to card.status, edit_card_path(card.id) %></td>
     </tr>

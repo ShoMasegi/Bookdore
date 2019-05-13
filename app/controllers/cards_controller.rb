@@ -2,7 +2,7 @@ class CardsController < ApplicationController
 
   # GET /cards
   def index
-    @cards = Card.all
+    @cards = Card.all.order(created_at: :desc)
   end
 
   # GET /cards/:id
