@@ -2,7 +2,8 @@ class CardsController < ApplicationController
 
   # GET /cards
   def index
-    @cards = Card.all.order(created_at: :desc)
+    @q = Card.ransack(params[:q])
+    @cards = @q.result
   end
 
   # GET /cards/:id
