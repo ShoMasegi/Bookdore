@@ -1,16 +1,18 @@
 <br>
 <br>
 <table border>
-  <tr bgcolor="green">
-    <th>created at</th>
+  <tr bgcolor="#add8e6">
+    <th><%= sort_link(@q, :created_at) %></th>
     <th>book</th>
     <th>status</th>
+    <th><%= sort_link(@q, :deadline) %></th>
   </tr>
   <% @cards.each do |card| %>
     <tr>
       <td><%= card.created_at %></td>
       <td><%= link_to card.book, card_path(card.id) %></td>
       <td><%= link_to card.status, edit_card_path(card.id) %></td>
+      <td><%= card.deadline %></td>
     </tr>
   <% end %>
 </table>

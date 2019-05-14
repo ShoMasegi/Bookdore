@@ -6,5 +6,6 @@ class Card < ApplicationRecord
   validates :status,
             presence: true,
             length: { maximum: 100 }
-
+  validates :deadline,
+            presence: true
 end

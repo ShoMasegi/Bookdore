@@ -2,7 +2,8 @@ class CardsController < ApplicationController
 
   # GET /cards
   def index
-    @cards = Card.all.order(created_at: :desc)
+    @q = Card.ransack(params[:q])
+    @cards = @q.result
   end
 
   # GET /cards/:id
@@ -58,6 +59,6 @@ class CardsController < ApplicationController
   private
 
   def user_params
-    params.require(:card).permit(:book, :status)
+    params.require(:card).permit(:book, :status, :deadline)
   end
 end

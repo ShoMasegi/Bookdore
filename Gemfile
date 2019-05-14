@@ -9,6 +9,8 @@ gem 'rails', '~> 5.2.3'
 gem 'bootstrap-sass', '3.4.1'
 # Use PostgreSQL as the database for Active Record
 gem 'pg', '0.18.4'
+# Use sort helper
+gem 'ransack'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -35,6 +37,13 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+# Use jQuery for datetimepicker
+gem 'jquery-rails'
+
+# Use date time picker
+gem 'momentjs-rails', '>=2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
