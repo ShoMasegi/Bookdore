@@ -9,7 +9,7 @@ describe 'Card create action: ', type: :system do
     before do
       visit new_card_path
       fill_in 'form_book', with: "Test Book"
-      fill_in 'form_status', with: "Test Status"
+      find('#form_status').find(:xpath, 'option[2]').select_option
       fill_in 'form_deadline', with: "2020-01-01 00:00:00"
       click_button "Create new card"
     end
