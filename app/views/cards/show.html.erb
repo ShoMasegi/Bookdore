@@ -1,2 +1,22 @@
-<%= @card.book %>, <%= @card.status %>
-<%= link_to "delete", @card, method: :delete, data: { confirm: "You sure?" } %>
+<h1>
+  Card Detail
+</h1>
+
+<table class="table table-hover">
+  <tbody>
+  <tr>
+    <th>Book Name</th>
+    <td><%= @card.book %></td>
+  </tr>
+  <tr>
+    <th>Card Status</th>
+    <td><%= @card.status %></td>
+  </tr>
+  <tr>
+    <th>Deadline</th>
+    <td><%= @card.deadline %></td>
+  </tr>
+  </tbody>
+</table>
+<%= link_to "delete", @card, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-primary' %>
+<%= link_to "edit", edit_card_path(@card), class: 'btn btn-primary mr-3' %>

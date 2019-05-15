@@ -1,19 +1,42 @@
-<br>
-<br>
-<table border>
-  <tr bgcolor="#add8e6">
+<h1>
+  Cards Table
+</h1>
+<dl class="search box">
+  <%= search_form_for @q do |form| %>
+    <div class="form-group">
+      <div class="row">
+        <%= form.label :book_cont, 'Book Name', class: 'col-sm-2 col-form-label' %>
+        <div class="col-sm-10">
+          <%= form.text_field :book_cont, placeholder: 'Search word....', class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= form.submit 'Search', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</dl>
+<table class="table table-hover">
+  <thead class="thead-default">
+  <tr>
     <th><%= sort_link(@q, :created_at) %></th>
     <th>book</th>
     <th>status</th>
     <th><%= sort_link(@q, :deadline) %></th>
   </tr>
+  </thead>
+  <tbody>
   <% @cards.each do |card| %>
     <tr>
       <td><%= card.created_at %></td>
       <td><%= link_to card.book, card_path(card.id) %></td>
-      <td><%= link_to card.status, edit_card_path(card.id) %></td>
+      <td><%= card.status %></td>
       <td><%= card.deadline %></td>
+      <td>
+        <%= link_to "edit", edit_card_path(card), class: 'btn btn-primary mr-3' %>
+        <%= link_to "delete", card, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-primary' %>
+      </td>
     </tr>
   <% end %>
+  </tbody>
 </table>
-<br>
