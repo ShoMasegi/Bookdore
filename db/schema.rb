@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2019_05_14_071223) do
     t.string "book"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "deadline"
+    t.datetime "deadline"
     t.integer "status", default: 0, null: false
   end
 
