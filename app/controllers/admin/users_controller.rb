@@ -19,7 +19,7 @@ class Admin::UsersController < ApplicationController
 
   # GET /admin/users/1/edit
   def edit
-    @user - User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   # POST /admin/users

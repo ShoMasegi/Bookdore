@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/login', to: 'sessions#new'
+
   namespace :admin do
     resources :users
   end
@@ -6,4 +8,3 @@ Rails.application.routes.draw do
   root 'home#new'
   resources :cards
 end
-
