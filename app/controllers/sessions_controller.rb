@@ -15,6 +15,13 @@ class SessionsController < ApplicationController
     end
   end
 
+  # DELETE /sessions/1
+  # DELETE /sessions/1.json
+  def destroy
+    reset_session
+    redirect_to root_path, notice: 'successfully logout'
+  end
+
   private
 
     def session_params
