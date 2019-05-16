@@ -9,6 +9,7 @@ class Admin::UsersController < ApplicationController
   # GET /admin/users/1
   # GET /admin/users/1.json
   def show
+    @user = User.find(params[:id])
   end
 
   # GET /admin/users/new
@@ -18,6 +19,7 @@ class Admin::UsersController < ApplicationController
 
   # GET /admin/users/1/edit
   def edit
+    @user - User.find(params[:id])
   end
 
   # POST /admin/users
@@ -35,27 +37,28 @@ class Admin::UsersController < ApplicationController
 
   # PATCH/PUT /admin/users/1
   # PATCH/PUT /admin/users/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @user.update(user_params)
-  #       format.html { redirect_to @user, notice: 'User was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @user }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @user.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      redirect_to admin_user_path(@user), notice: "Updated user data: #{@user.name}."
+    else
+      flash[:danger] = "Error : Failed to update user."
+      render :new
+    end
+  end
 
   # DELETE /admin/users/1
   # DELETE /admin/users/1.json
-  # def destroy
-  #   @user.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      redirect_to admin_user_url, notice: "User was successfully destroyed."
+    else
+      flash[:danger] = "Error : Failed to delete user."
+      render :index
+    end
+  end
 
   private
 

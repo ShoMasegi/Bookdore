@@ -1,25 +1,33 @@
-<p id="notice"><%= notice %></p>
+<h1>Users Table</h1>
 
-<h1>Admin Users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @admin_users.each do |admin_user| %>
+<div class="mb-3">
+  <table class="table table-hover">
+    <thead class="thead-default">
       <tr>
-        <td><%= link_to 'Show', admin_user %></td>
-        <td><%= link_to 'Edit', edit_admin_user_path(admin_user) %></td>
-        <td><%= link_to 'Destroy', admin_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th><%= User.human_attribute_name(:name) %></th>
+        <th><%= User.human_attribute_name(:email) %></th>
+        <th><%= User.human_attribute_name(:admin) %></th>
+        <th><%= User.human_attribute_name(:created_at) %></th>
+        <th><%= User.human_attribute_name(:updated_at) %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, [:admin, user] %></td>
+        <td><%= user.email %></td>
+        <td><%= user.admin? ? 'Admin' : 'Normal' %></td>
+        <td><%= user.created_at %></td>
+        <td><%= user.updated_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-primary mr-3' %>
+        </td>
+        <td>
+          <%= link_to 'Delete', [:admin, user], method: :delete, data: { confirm: "Delete '#{user.name}'. You sure?" }, class: 'btn btn-danger' %>
+        </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Admin User', new_admin_user_path %>
+    </tbody>
+  </table>
+</div>
