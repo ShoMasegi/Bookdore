@@ -12,7 +12,7 @@
       <%= form.select :status, Card.statuses.keys.to_a, {}, class: 'form-control', id: 'form_status' %>
 
       <%= form.label :deadline %>
-      <%= form.text_field :deadline, data: { date_format: "YYYY-MM-DD HH:mm:ss"}, class: 'form-control', placeholder: 'YYYY-MM-DD HH:mm:ss', id: 'form_deadline' %>
+      <%= form.text_field :deadline, data: { date_format: "YYYY-MM-DD HH:mm"}, class: 'form-control', placeholder: 'YYYY-MM-DD HH:mm', id: 'form_deadline' %>
       <script type="text/javascript">
           $(function () {
               $('#form_deadline').datetimepicker();
