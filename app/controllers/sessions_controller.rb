@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :login_required
 
   # GET /sessions/new
   def new
@@ -12,10 +13,12 @@ class SessionsController < ApplicationController
     if user&.authenticate(session_params[:password])
       session[:user_id] = user.id
       redirect_to root_path, flash: { success: 'Successfully login!' }
+    else
+      redirect_to login_path, flash: { danger: 'We cannot find an account with that email address and password' }
     end
   end
 
-  # DELETE /sessions/1
+  # DELETE /sessions/
   # DELETE /sessions/1.json
   def destroy
     reset_session
