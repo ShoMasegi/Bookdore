@@ -9,4 +9,6 @@ class Card < ApplicationRecord
             length: { maximum: 100 }
   validates :deadline,
             presence: true
+
+  belongs_to :user
 end

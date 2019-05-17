@@ -2,13 +2,13 @@ class CardsController < ApplicationController
 
   # GET /cards
   def index
-    @q = Card.ransack(params[:q])
+    @q = current_user.cards.ransack(params[:q])
     @cards = @q.result
   end
 
   # GET /cards/:id
   def show
-    @card = Card.find(params[:id])
+    @card = current_user.cards.find(params[:id])
   end
 
   # GET /cards/new
@@ -23,7 +23,7 @@ class CardsController < ApplicationController
 
   # POST /cards
   def create
-    @card = Card.new(user_params)
+    @card = current_user.cards.new(user_params)
     if @card.save
       flash[:success] = "Succeed to create card!"
       redirect_to @card

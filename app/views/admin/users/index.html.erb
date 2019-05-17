@@ -1,0 +1,36 @@
+<h1>Users Table</h1>
+
+<div class="nav justify-content-end">
+  <%= link_to 'Create', new_admin_user_path, class: 'nav-link' %>
+</div>
+<div class="mb-3">
+  <table class="table table-hover">
+    <thead class="thead-default">
+      <tr>
+        <th><%= User.human_attribute_name(:name) %></th>
+        <th><%= User.human_attribute_name(:email) %></th>
+        <th><%= User.human_attribute_name(:admin) %></th>
+        <th><%= User.human_attribute_name(:created_at) %></th>
+        <th><%= User.human_attribute_name(:updated_at) %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, [:admin, user] %></td>
+        <td><%= user.email %></td>
+        <td><%= user.admin? ? 'Admin' : 'Normal' %></td>
+        <td><%= user.created_at %></td>
+        <td><%= user.updated_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-primary mr-3' %>
+        </td>
+        <td>
+          <%= link_to 'Delete', [:admin, user], method: :delete, data: { confirm: "Delete '#{user.name}'. You sure?" }, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
