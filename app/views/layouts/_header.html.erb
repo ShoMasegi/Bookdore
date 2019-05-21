@@ -4,8 +4,8 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <li class="nav-item"><%= link_to "Table", cards_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to "Create", new_card_path, class: 'nav-link' %></li>
+<!--          <li class="nav-item"><%#= link_to "Table", cards_path, class: 'nav-link' %></li>-->
+<!--          <li class="nav-item"><%#= link_to "Create", new_card_path, class: 'nav-link' %></li>-->
           <% if current_user.admin? %>
             <li class="nav-item"><%= link_to "User List", admin_users_path, class: 'nav-link' %></li>
           <% end %>
