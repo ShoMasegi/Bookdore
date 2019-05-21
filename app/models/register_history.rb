@@ -1,0 +1,2 @@
+class RegisterHistory < ApplicationRecord
+end
