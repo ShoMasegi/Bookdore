@@ -9,4 +9,5 @@ Rails.application.routes.draw do
 
   root 'home#new'
   resources :cards
+  resources :books
 end
