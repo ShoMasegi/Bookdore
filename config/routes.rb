@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   end
 
   root 'home#new'
-  resources :cards
+  # resources :cards
   resources :books
 end
