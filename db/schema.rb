@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_22_074841) do
+ActiveRecord::Schema.define(version: 2019_05_22_080001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,9 +48,11 @@ ActiveRecord::Schema.define(version: 2019_05_22_074841) do
     t.bigint "concrete_history_id"
     t.bigint "card_id", null: false
     t.bigint "book_id", null: false
+    t.bigint "user_id", null: false
     t.index ["book_id"], name: "index_histories_on_book_id"
     t.index ["card_id"], name: "index_histories_on_card_id"
     t.index ["concrete_history_type", "concrete_history_id"], name: "index_histories_on_concrete_history"
+    t.index ["user_id"], name: "index_histories_on_user_id"
   end
 
   create_table "read_histories", force: :cascade do |t|
