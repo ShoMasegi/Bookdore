@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_21_130440) do
+ActiveRecord::Schema.define(version: 2019_05_22_065040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2019_05_21_130440) do
     t.datetime "updated_at", null: false
     t.string "concrete_history_type"
     t.bigint "concrete_history_id"
+    t.bigint "card_id", null: false
+    t.index ["card_id"], name: "index_histories_on_card_id"
     t.index ["concrete_history_type", "concrete_history_id"], name: "index_histories_on_concrete_history"
   end
 

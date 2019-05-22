@@ -12,4 +12,5 @@ class Card < ApplicationRecord
 
   belongs_to :user
   belongs_to :book
+  has_many :histories
 end
