@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :cards do
     resources :books, only: [:index, :show]
   end
+  resources :histories, except: [:destroy, :update]
 end
