@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
-  # before_action :login_required
-  skip_before_action :verify_authenticity_token
+  before_action :login_required
 
   private
 
