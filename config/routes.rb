@@ -8,5 +8,9 @@ Rails.application.routes.draw do
   end
 
   root 'home#new'
-  # resources :cards
+  resources :books, except: [:destroy]
+  resources :cards do
+    resources :books, only: [:index, :show]
+  end
+  resources :histories, except: [:destroy, :update]
 end
