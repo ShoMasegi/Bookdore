@@ -36,7 +36,14 @@ class HistoriesController < ApplicationController
   # POST /histories
   # POST /histories.json
   def create
-    @history = History.new(history_params)
+    # FIXME: If failed to create history, dont create concrete_history.
+    concrete_history = concrete_history(
+        history_params[:concrete_history].permit(concrete_history_params)
+    )
+    @history = History.new(
+        card_id: history_params[:card_id],
+        concrete_history: concrete_history
+    )
 
     respond_to do |format|
       if @history.save
@@ -87,6 +94,26 @@ class HistoriesController < ApplicationController
   private
 
     def history_params
-      params.require(:history).permit(:no-specs)
+      params.require(:history)
+            .permit(:card_id, concrete_history: concrete_history_params)
+    end
+
+    def concrete_history_params
+      [register_history: [:from, :to], read_history: [:page_count, :time_sec]]
+    end
+
+    def concrete_history(params)
+      if params.include?(:concrete_history)
+        raise ArgumentError, "argument is not correct."
+      end
+      if params.include?(:read_history)
+        ReadHistory.create(params[:read_history])
+        # FIXME: Dont create action in method
+      elsif params.include?(:register_history)
+        RegisterHistory.create(params[:register_history])
+        # FIXME
+      else
+        nil
+      end
     end
 end
