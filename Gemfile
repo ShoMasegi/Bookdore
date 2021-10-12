@@ -73,7 +73,7 @@ end
 group :production do
   gem 'rails_12factor' 
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
